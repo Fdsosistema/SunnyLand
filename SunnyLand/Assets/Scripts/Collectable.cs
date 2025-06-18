@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    private int pontos = 5;
-    // Start is called before the first frame update
-    void Start()
+    public TMP_Text Point_Text;
+    int p = 0;
+    public ParticleSystem efeito;
+    private void OnTriggerEnter2D(Collider2D verificar)
     {
-        Debug.Log("game started" + pontos + "pontos");       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        if (verificar.CompareTag("Player"))
+        {
+            Debug.Log("foi");
+            p++;
+            Point_Text.text = "Pontos: "+ p.ToString();
+            verificar.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            Instantiate(efeito, transform.position, Quaternion.identity);
+        }
     }
 }

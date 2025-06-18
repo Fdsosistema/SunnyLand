@@ -10,11 +10,13 @@ public class Player : MonoBehaviour
     public float speed = 2;
     private bool isAlive = true;
     private Rigidbody2D rb;
+    public float CU = 0;
+
     void Start()
     {
         Debug.Log("Nome:" + nome + "\nVida:" + HP + "\nVelocidade:" + speed + "\nVivo ou morto:" + isAlive);
     rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 1;
+        rb.gravityScale = CU;
     }
 
     // Update is called once per frame
